@@ -31,6 +31,7 @@ def main():
     dir_path = glob(os.path.join(args.input,"train/*"))
     for dir in dir_path:
         datadict = unpickle(dir)
+        print(datadict[b'data'].shape)
         data.append(datadict[b"data"])
         labels.append(datadict[b"labels"])
 
@@ -48,6 +49,14 @@ def main():
 
     dataloaders_dict = {'train':train_dataloader, 'val':val_dataloader}
 
+    
 
-if __name__ == '__main__':
-    main()
+# if __name__ == '__main__':
+#     main()
+
+import torch
+from models import CustomResnet18LSTM
+net = CustomResnet18LSTM()
+
+input = torch.ones((64,10,3,224,224))
+out = net(input)
