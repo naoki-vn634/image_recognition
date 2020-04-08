@@ -51,12 +51,12 @@ def main():
 
     
 
-# if __name__ == '__main__':
-#     main()
+if __name__ == '__main__':
+    main()
 
-import torch
-from models import CustomResnet18LSTM
-net = CustomResnet18LSTM()
+# import torch
+# from models import CustomResnet18LSTM
+# net = CustomResnet18LSTM()
 
-input = torch.ones((64,10,3,224,224))
-out = net(input)
+# input = torch.ones((64,10,3,224,224))
+# out = net(input)

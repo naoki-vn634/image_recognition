@@ -51,9 +51,11 @@ class CustomResnet18LSTM(nn.Module):
         batch_size,frames = x.shape[:2]
         x = x.view(-1,x.shape[2],x.shape[3],x.shape[4])
         h = self.res(x)
+        print(h.size())
         h = self.dr1(self.relu1(self.fc1(h.view(-1,512))))
+        print(h.size())
         h = h.view(batch_size,frames,-1)
-
+        
         output, (h1,c1) = self.lstm(h, None)
         output = self.fc2(output[:,-1,:])
 
